@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,3 +35,10 @@ Route::get('/', function () {
 });
 
 Route::get('/lmao',[HomePageController::class,'index'])->name('home');
+Route::get('/users/{userId}/{username?}', function (
+    Request $request,
+    $userId,
+    $userName = 'profile'
+) {
+    dd($userId, $userName, $request->all());
+});
