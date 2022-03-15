@@ -34,7 +34,9 @@ Route::get('/', function () {
     return view('auth.login', compact('ps'));
 });
 
-Route::get('/lmao',[HomePageController::class,'index'])->name('home');
+Route::get('/home', function(){return view('home');});
+Route::get('/product', function(){return view('product');});
+
 Route::get('/users/{userId}/{username?}', function (
     Request $request,
     $userId,
