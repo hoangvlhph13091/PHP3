@@ -1,0 +1,197 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+.container{
+    width: 95%;
+    margin: 0 auto;
+}
+.detail .detail__product .detail__product__view {
+    display: grid;
+    grid-template-columns: 45% auto;
+    grid-gap: 20px;
+}
+.detail .detail__product .detail__product__view .detail__product_img .slideshow_gallery .mySlides img {
+    vertical-align: middle;
+    object-fit: cover;
+    height: 550px;
+}
+.detail .detail__product .detail__product__view .detail__product_img .slideshow_gallery .mySlides iframe {
+    width: 100%;
+    height: calc(.5625 * 100vw);
+    height: 550px;
+    outline: none;
+    border: none;
+    vertical-align: middle;
+    object-fit: cover;
+}
+.detail .detail__product .detail__product__view .detail__product_img .slideshow_gallery .img-small {
+    display: flex;
+    margin: 5px 0;
+}
+
+.detail .detail__product .detail__product__view .detail__product_img .slideshow_gallery .img-small .column {
+    display: flex;
+    max-height: 150px;
+    margin: 0 5px;
+    cursor: pointer;
+}
+.detail .detail__product .detail__product__view .detail__product_img .slideshow_gallery .img-small .column img{
+    object-fit: cover;
+    height: 70px;
+}
+.detail .detail__product .detail__product__view .detail__product_img .slideshow_gallery .img-small .column i {
+    width: 100%;
+    font-size: 45px;
+    color: #FFFFFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    background-color: #0D0C22;
+    height: 150px;
+}
+.detail .detail__product {
+    padding: 40px 0;
+}
+.detail .detail__product .detail__product__view .detail__product__infor p {
+    display: inline-block;
+    font-weight: bold;
+}
+.detail .detail__product .detail__product__view .detail__product__infor .detail__product__name h4 {
+    font-size: 22px;
+    color: #2D3748;
+}
+.detail .detail__product .detail__product__view .detail__product__infor .detail__product__scores {
+    border-bottom: 1px solid #e1e1e1;
+    padding-bottom: 30px;
+    margin-bottom: 30px !important;
+}
+
+.detail .detail__product .detail__product__view .detail__product__infor .detail__product__scores p,
+.detail .detail__product .detail__product__view .detail__product__infor .detail__product__scores span {
+    font-size: 20px;
+}
+
+.detail .detail__product .detail__product__view .detail__product__infor .detail__product__scores span {
+    color: #f35555;
+}
+
+.detail .detail__product .detail__product__view .detail__product__infor p {
+    color: #606060;
+    font-size: 17px;
+}
+
+.detail .detail__product .detail__product__view .detail__product__infor span {
+    font-size: 15px;
+    color: #606060;
+}
+
+.detail .detail__product .detail__product__view .detail__product__infor i {
+    font-size: 15px;
+    color: #606060;
+}
+
+.detail .detail__product .detail__product__view .detail__product__infor .detail__product__member>span {
+    margin-right: 10px;
+    line-height: 30px;
+}
+
+.detail .detail__product .detail__product__view .detail__product__infor .detail__product__scores,
+.detail .detail__product .detail__product__view .detail__product__infor .detail__product__specialized,
+.detail .detail__product .detail__product__view .detail__product__infor .detail__product__subject-code,
+.detail .detail__product .detail__product__view .detail__product__infor .detail__product__semester,
+.detail .detail__product .detail__product__view .detail__product__infor .detail__product__teacher,
+.detail .detail__product .detail__product__view .detail__product__infor .detail__product__published {
+    margin: 15px 0;
+    font-size: 18px;
+}
+.detail .detail__product .detail__product__view .detail__product__infor .detail__product__teacher {
+    border-bottom: 1px solid #e1e1e1;
+    padding-bottom: 25px;
+}
+.detail .detail__product .detail__product__view .detail__product__infor .detail__product__document {
+    margin-top: 20px;
+}
+.detail .detail__product .detail__product__custom .btn-slide h4 {
+    text-align: center;
+    font-size: 20px;
+    margin: 5px;
+    color: #2D3748;
+    padding: 10px 15px;
+    border-radius: 5px;
+}
+.detail .detail__product .detail__product__custom {
+    margin: 40px 0;
+}
+.detail .detail__product .detail__product__custom .description {
+    margin-top: 30px;
+}
+
+@media (max-width:960px) {
+    .detail .detail__product .detail__product__view {
+        display: block;
+    }
+
+    .detail .detail__product .detail__product__view .detail__product__infor {
+        margin: 20px 0;
+    }
+}
+
+@media (max-width:600px) {
+    .detail .detail__product .detail__product__view .detail__product_img .slideshow_gallery .mySlides img {
+
+        height: 450px;
+    }
+
+    .detail .detail__product .detail__product__view .detail__product_img .slideshow_gallery .mySlides iframe {
+        height: 450px;
+    }
+
+}
+
+@media (max-width:400px) {
+    .detail .detail__product .detail__product__view .detail__product_img .slideshow_gallery .img-small .column i {
+        font-size: 35px;
+    }
+}
+
+@media (max-width:350px) {
+
+    .detail .detail__product .detail__product__view .detail__product_img .slideshow_gallery .mySlides img {
+
+        height: 250px;
+    }
+
+    .detail .detail__product .detail__product__view .detail__product_img .slideshow_gallery .mySlides iframe {
+        height: 250px;
+    }
+
+    .detail .detail__product .detail__product__view .detail__product__infor .detail__product__appraise {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .detail .detail__product .detail__product__view .detail__product__infor .detail__product__appraise .detail__product__appraise__star {
+        width: 100%;
+        border: none;
+    }
+
+    .detail .detail__product .detail__product__custom .btn-slide h4 {
+        font-size: 18px;
+        margin: 5px !important;
+        padding: 5px !important;
+    }
+
+    .detail .detail__product .detail__related__product .detail__related__product__heading h4 {
+        font-size: 18px;
+    }
+
+    .detail .detail__product .detail__related__product .detail__related__product__heading {
+        margin-bottom: 40px;
+    }
+
+    .detail .detail__product .detail__product__view .detail__product_img .slideshow_gallery .img-small .column i {
+        font-size: 25px;
+    }
+}

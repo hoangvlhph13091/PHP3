@@ -1,4 +1,4 @@
-@extends('layout.main')
+@extends('admin.layouts.main')
 @section('title')
     wjbu for e var
 @endsection
