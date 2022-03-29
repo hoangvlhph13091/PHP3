@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,10 +22,22 @@ Route::get('/home', function(){return view('home');});
 Route::get('/', function(){return view('home');});
 Route::get('/product', function(){return view('product');});
 
-Route::get('/users/{userId}/{username?}', function (
-    Request $request,
-    $userId,
-    $userName = 'profile'
-) {
-    dd($userId, $userName, $request->all());
+route::prefix('admin')->group(function(){
+    Route::get('/category', [CategoryController::class, 'index'])->name('category');
+    Route::get('/category/add', [CategoryController::class, 'addForm'])->name('category/AddForm');
+    Route::post('/category/add', [CategoryController::class, 'add'])->name('categoryAdd');
+    Route::get('/category/edit/{id}', [CategoryController::class, 'editForm'])->name('category/EditForm');
+    Route::post('/category/edit/{id}', [CategoryController::class, 'index'])->name('categoryEdit');
+    Route::any('/category/del/{id}', [CategoryController::class, 'del'])->name('category/Del');
+
+    Route::get('/product', [ProductController::class, 'index'])->name('product');
+    Route::get('/product/add', [ProductController::class, 'addform'])->name('product-addform');
+    Route::post('/product/add', [ProductController::class, 'add'])->name('product-add');
+    Route::get('/product/edit/{id}', [ProductController::class, 'editform'])->name('product-editform');
+    Route::post('/product/edit/{id}', [ProductController::class, 'index'])->name('product-edit');
+    Route::any('/product/del/{id}', [ProductController::class, 'del'])->name('product-del');
+    
+
 });
+
+

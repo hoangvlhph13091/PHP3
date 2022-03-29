@@ -133,7 +133,8 @@ License: You must have a valid license purchased only from themeforest(the above
 
 		<!--begin::Page Scripts -->
         @yield('page-script')
-		{{-- @include('popper::assets') --}}
+		@include('popper::assets')
+	
 		<!--end::Page Scripts -->
 	</body>
 
