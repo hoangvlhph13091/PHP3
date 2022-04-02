@@ -1,6 +1,6 @@
 @extends('admin.layouts.main')
 @section('title')
-    <p>category</p>
+    <p>Post</p>
 @endsection
 @section('content')
     <div class="container">
@@ -11,7 +11,7 @@
              </div>
             <div class="search">
               <div> 
-               <a href="{{route('category/AddForm')}}" class="btn btn-outline-brand m-btn m-btn--custom m-btn--icon m-btn--pill m-btn--air">
+               <a href="{{route('post-add')}}" class="btn btn-outline-brand m-btn m-btn--custom m-btn--icon m-btn--pill m-btn--air">
                  <span>
                    <i class="la la-plus"></i>
                    <span>Add</span>
@@ -37,19 +37,29 @@
               <thead>
                 <tr role="row">
                   <th class="sorting sorting_desc" tabindex="0" aria-controls="kt_datatable" rowspan="1" colspan="1"  >ID</th>
-                  <th class="sorting" tabindex="0" aria-controls="kt_datatable" rowspan="1" colspan="1" >Tên</th>
-                  <th class="sorting" tabindex="0" aria-controls="kt_datatable" rowspan="1" colspan="1" >image</th>
+                  <th class="sorting" tabindex="0" aria-controls="kt_datatable" rowspan="1" colspan="1" >cate name</th>
+                  <th class="sorting" tabindex="0" aria-controls="kt_datatable" rowspan="1" colspan="1" >product</th>
                   <th class="sorting" rowspan="1" colspan="1" style="text-align: center"  aria-label="Actions">Actions</th>
                 </tr>
               </thead>
               <tbody>
-                @foreach ($category as $cate)
+                @foreach ($post as $p)
                   <tr class="odd">
-                    <td >{{$cate->id}}</td>
-                    <td>{{$cate->name}}</td>
-                    <td></td>
-                        <td style="text-align: center" ><a href="{{route('category/EditForm',['id'=> $cate->id])}}" class="btn btn-primary " @popper(Chỉnh Sửa)><i class="fa	fa-edit"></i></a>  
-                                                        <a onclick="return confirm('chắc ko bạn')" href="{{route('category/Del',['id'=> $cate->id])}}" class="btn btn-danger " @popper(Xóa) ><i class="fa fa-ban"></i></a></td>
+                    <td >{{$p->id}}</td>
+
+                    <td>
+                        {{$p->cate[0]->name}}
+                    </td>
+
+                    <td>
+                        @foreach ($p->prod as $prod)
+                                <li>{{ $prod->name}}</li>
+                        @endforeach
+
+                               
+                    </td>
+                        <td style="text-align: center" ><a href="{{route('category/EditForm',['id'=> $p->id])}}" class="btn btn-primary " @popper(Chỉnh Sửa)><i class="fa	fa-edit"></i></a>  
+                                                        <a onclick="return confirm('chắc ko bạn')" href="{{route('category/Del',['id'=> $p->id])}}" class="btn btn-danger " @popper(Xóa) ><i class="fa fa-ban"></i></a></td>
         
                   </tr>
                     
@@ -62,7 +72,7 @@
         </div>
       <div  class=" dataTables_pager">
           
-          {!! $category->links() !!}
+          {!! $post->links() !!}
         
       </div>
             <!--end: Datatable-->

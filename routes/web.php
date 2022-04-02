@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\PostsController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -36,6 +37,12 @@ route::prefix('admin')->group(function(){
     Route::get('/product/edit/{id}', [ProductController::class, 'editform'])->name('product-editform');
     Route::post('/product/edit/{id}', [ProductController::class, 'index'])->name('product-edit');
     Route::any('/product/del/{id}', [ProductController::class, 'del'])->name('product-del');
+
+    Route::get('/post', [PostsController::class, 'index'])->name('post');
+    Route::get('/post/add', [PostsController::class, 'addform'])->name('post-add');
+    Route::post('/post/add', [PostsController::class, 'add'])->name('post-add');
+    Route::any('/post/del{id}', [PostsController::class, 'del'])->name('post-del');
+
     
 
 });

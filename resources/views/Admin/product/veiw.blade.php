@@ -65,7 +65,13 @@
               </tbody>
             </table>
           </div>
+         
         </div>
+        
+        </div>
+        <div  class=" dataTables_pager">
+          
+          {!! $product->links() !!}
         
         </div>
             <!--end: Datatable-->

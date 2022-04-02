@@ -14,8 +14,8 @@ class ProductController extends Controller
         // chỉ hiển thị status >0 để tránh lỗi sml
         // $product=Products::Where('status','>', '0')->get();
 
-        // xóa cmnr nên all luôn chả chết nổi :v
-        $product=Products::all();
+        
+        $product=Products::paginate(10);
         $product->load('cate');
         return view('Admin.product.veiw',compact('product'));
     }

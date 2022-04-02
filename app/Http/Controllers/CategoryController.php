@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class CategoryController extends Controller
 {
     public function index(){
-        $category=Categories::all();
+        $category=Categories::paginate(10);
         return view('Admin.category.veiw',compact('category'));
     }
     public function addForm(){
