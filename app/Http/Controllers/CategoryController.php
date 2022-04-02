@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Categories;
+use App\Models\Products;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -30,6 +31,14 @@ class CategoryController extends Controller
     
     }
     public function del($id){
+        // xóa cate xóa luôn product lmao
+        Products::where('category', $id)->delete();
+        // chuyển status về 0 ?????
+        // $products=Products::where('category', $id)->get();
+        // foreach($products as $p){
+        //     $p->status = 0;
+        //     $p->save();
+        // }
         Categories::destroy($id);
         return redirect()->route('category')->with('message', 'Xóa Thành Công');
     }

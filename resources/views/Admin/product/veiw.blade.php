@@ -54,7 +54,7 @@
                     <td>{{$pd->price}}</td>
                     <td>image</td>
                     <td>{{$pd->description}}</td>
-                    <td>{{$pd->category}}</td>
+                    <td>{{$pd->cate->name}}</td>
                     <td>{{$pd->status}}</td>
                         <td style="text-align: center" ><a href="{{route('category/EditForm',['id'=> $pd->id])}}" class="btn btn-primary " @popper(Chỉnh Sửa)><i class="fa	fa-edit"></i></a>  
                                                         <a onclick="return confirm('chắc ko bạn')" href="{{route('product-del',['id'=> $pd->id])}}" class="btn btn-danger " @popper(Xóa) ><i class="fa fa-ban"></i></a></td>
