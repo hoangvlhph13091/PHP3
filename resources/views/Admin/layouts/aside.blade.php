@@ -18,11 +18,11 @@
             {{-- @endrole
 
             @role('teacher') --}}
-            {{-- <li class="m-menu__item {{ request()->routeIs('preview*') ? 'm-menu__item--active' : '' }}" aria-haspopup="true">
-                <a href="" id="menu_item" class="m-menu__link">
-                    <i class="m-menu__link-icon fa 	fa-chalkboard-teacher"></i><span class="m-menu__link-title"> <span class="m-menu__link-wrap"> <span class="m-menu__link-text">Giáo Viên Bộ Môn Phê Duyệt</span>
+            <li class="m-menu__item {{ request()->routeIs('user*') ? 'm-menu__item--active' : '' }}" aria-haspopup="true">
+                <a href="{{route('user')}}" id="menu_item" class="m-menu__link">
+                    <i class="m-menu__link-icon fa 	fa-chalkboard-teacher"></i><span class="m-menu__link-title"> <span class="m-menu__link-wrap"> <span class="m-menu__link-text">User</span>
                 </a>
-            </li> --}}
+            </li>
              {{-- @endrole
            
              @role('major_head_teacher') --}}

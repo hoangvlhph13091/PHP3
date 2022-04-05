@@ -36,10 +36,33 @@ class ProductController extends Controller
             'description.required'=>'Mô Tả Không Được Để Trống',
             ]
         );
-        $cate=new Products();
-        $cate->fill($request->all());
-        $cate->save();
-        return redirect(route('product'));
+        $prod=new Products();
+        $prod->fill($request->all());
+        $prod->save();
+        return redirect(route('product'))->with('message', 'Thêm Thành Công');
+    }
+    public function editform($id){
+        $product=Products::where('id', $id)->first();
+        $category=Categories::all();
+        return view('Admin.product.edit', compact('category', 'product'));
+    }
+    public function edit(Request $request,$id){
+        $request->validate(
+            [ 'name'=>'required',
+            'price'=>'required|integer',
+            'image'=>'required',
+            'description'=>'required',
+            ],[
+            'name.required'=>'Tên Không Được Để Trống',
+            'price.required'=>'Giá Không Được Để Trống',
+            'image.required'=>'Ảnh Không Được Để Trống',
+            'description.required'=>'Mô Tả Không Được Để Trống',
+            ]
+        );
+        $prod=Products::find($id);
+        $prod->fill($request->all());
+        $prod->save();
+        return redirect(route('product'))->with('message', 'Sửa Thành Công');
     }
     public function del($id){
         Products::destroy($id);

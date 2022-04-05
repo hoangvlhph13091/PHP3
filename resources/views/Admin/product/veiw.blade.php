@@ -52,11 +52,15 @@
                     <td >{{$pd->id}}</td>
                     <td>{{$pd->name}}</td>
                     <td>{{$pd->price}}</td>
-                    <td>image</td>
+                    <td><img src="{{$pd->image}}" style="height: 150px" alt=""></td>
                     <td>{{$pd->description}}</td>
                     <td>{{$pd->cate->name}}</td>
-                    <td>{{$pd->status}}</td>
-                        <td style="text-align: center" ><a href="{{route('category/EditForm',['id'=> $pd->id])}}" class="btn btn-primary " @popper(Chỉnh Sửa)><i class="fa	fa-edit"></i></a>  
+                    <td>@if ($pd->status==1)
+                          <p style="color: green ; font-weight: 700">Active</p>
+                        @else
+                            <p style="color: red ; font-weight: 700">Disabled</p>
+                    @endif</td>
+                        <td style="text-align: center" ><a href="{{route('product-edit',['id'=> $pd->id])}}" class="btn btn-primary " @popper(Chỉnh Sửa)><i class="fa	fa-edit"></i></a>  
                                                         <a onclick="return confirm('chắc ko bạn')" href="{{route('product-del',['id'=> $pd->id])}}" class="btn btn-danger " @popper(Xóa) ><i class="fa fa-ban"></i></a></td>
         
                   </tr>

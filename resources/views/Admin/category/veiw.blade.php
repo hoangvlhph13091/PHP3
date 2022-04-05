@@ -47,7 +47,7 @@
                   <tr class="odd">
                     <td >{{$cate->id}}</td>
                     <td>{{$cate->name}}</td>
-                    <td></td>
+                    <td><img src="{{$cate->image}}" style="height: 150px" alt=""></td>
                         <td style="text-align: center" ><a href="{{route('category/EditForm',['id'=> $cate->id])}}" class="btn btn-primary " @popper(Chỉnh Sửa)><i class="fa	fa-edit"></i></a>  
                                                         <a onclick="return confirm('chắc ko bạn')" href="{{route('category/Del',['id'=> $cate->id])}}" class="btn btn-danger " @popper(Xóa) ><i class="fa fa-ban"></i></a></td>
         

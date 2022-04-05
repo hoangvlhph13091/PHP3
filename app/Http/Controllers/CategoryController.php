@@ -23,12 +23,22 @@ class CategoryController extends Controller
         $cate=new Categories();
         $cate->fill($request->all());
         $cate->save();
-        return redirect(route('category'));
+        return redirect(route('category'))->with('message', 'Thêm Thành Công');
     }
     public function editForm($id){
-        $cate=Categories::where('id', $id);
-        dd($cate);
+        $cate=Categories::where('id', $id)->first();
+        return view('Admin.category.edit', compact('cate'));
     
+    }
+    public function edit(Request $request,$id){
+        $request->validate(
+            [ 'name'=>'required','image'=>'required'],
+            ['name.required'=>'Tên Không Được Để Trống','image.required'=>'Ảnh Không Được Để Trống']
+        );
+        $cate=Categories::find($id);
+        $cate->fill($request->all());
+        $cate->save();
+        return redirect(route('category'))->with('message', 'sửa Thành Công');
     }
     public function del($id){
         // xóa cate xóa luôn product lmao
