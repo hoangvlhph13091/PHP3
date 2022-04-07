@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
@@ -20,11 +21,14 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::get('/home', function(){return view('home');});
-Route::get('/', function(){return view('home');});
+Route::get('/home', function(){return view('home');})->name('home');
+Route::get('/', function(){return view('home');})->name('home');
 Route::get('/product', function(){return view('product');});
+Route::middleware('guest')->get('/login', [LoginController::class, 'index'])->name('login-form');
+Route::post('/login', [LoginController::class, 'login'])->name('login');
+Route::middleware('auth')->any('/logout', [LoginController::class, 'logout'])->name('logout');
 
-route::prefix('admin')->group(function(){
+route::middleware('auth')->prefix('admin')->group(function(){
     Route::get('/category', [CategoryController::class, 'index'])->name('category');
     Route::get('/category/add', [CategoryController::class, 'addForm'])->name('category/AddForm');
     Route::post('/category/add', [CategoryController::class, 'add'])->name('categoryAdd');

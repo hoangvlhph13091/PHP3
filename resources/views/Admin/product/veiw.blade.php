@@ -54,7 +54,9 @@
                     <td>{{$pd->price}}</td>
                     <td><img src="{{$pd->image}}" style="height: 150px" alt=""></td>
                     <td>{{$pd->description}}</td>
-                    <td>{{$pd->cate->name}}</td>
+                    <td>@if (isset($pd->cate->name))
+                      {{$pd->cate->name}}
+                    @endif</td>
                     <td>@if ($pd->status==1)
                           <p style="color: green ; font-weight: 700">Active</p>
                         @else
