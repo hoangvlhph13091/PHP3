@@ -38,7 +38,7 @@
                 </div> 
                 <div class="form-group m-form__group">
                     <label for="exampleInputPassword1">image</label>
-                    <input type="text" class="form-control m-input m-input--square @error('image') is-invalid @enderror" id="exampleInputPassword1" name="image" placeholder="Image link">
+                    <input type="file" class="form-control m-input m-input--square @error('image') is-invalid @enderror" id="exampleInputPassword1" name="image" placeholder="Image link">
                     @error('image')
                     <div class="alert text-danger">{{ $message }}</div>
                     @enderror

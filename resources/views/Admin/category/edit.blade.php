@@ -36,6 +36,20 @@
                     <div class="alert text-danger">{{ $message }}</div>
                     @enderror
                 </div>
+                <div class="form-group m-form__group">
+                    <label for="exampleInputPassword1">category</label>
+                    <select name="parent_id" id="" class="form-control">
+                        <option @if ($cate->parent_id==0)
+                            selected
+                        @endif value="0">N/A</option>
+
+                        @foreach ($category as $c)
+                            <option @if ($c->id == $cate->parent_id)
+                                selected
+                            @endif value="{{$c->id}}">{{$c->name}}</option>
+                        @endforeach
+                    </select>
+                </div> 
             </div>
             <div class="m-portlet__foot m-portlet__foot--fit">
                 <div class="m-form__actions">

@@ -39,6 +39,7 @@
                   <th class="sorting sorting_desc" tabindex="0" aria-controls="kt_datatable" rowspan="1" colspan="1"  >ID</th>
                   <th class="sorting" tabindex="0" aria-controls="kt_datatable" rowspan="1" colspan="1" >Tên</th>
                   <th class="sorting" tabindex="0" aria-controls="kt_datatable" rowspan="1" colspan="1" >image</th>
+                  <th class="sorting" tabindex="0" aria-controls="kt_datatable" rowspan="1" colspan="1" >Parent category</th>
                   <th class="sorting" rowspan="1" colspan="1" style="text-align: center"  aria-label="Actions">Actions</th>
                 </tr>
               </thead>
@@ -48,6 +49,11 @@
                     <td >{{$cate->id}}</td>
                     <td>{{$cate->name}}</td>
                     <td><img src="{{$cate->image}}" style="height: 150px" alt=""></td>
+                    <td>@if ($cate->parent_id == 0)
+                        <p>N/A</p>
+                    @else
+                      {{$cate->cate->name}}
+                    @endif</td>
                         <td style="text-align: center" ><a href="{{route('category/EditForm',['id'=> $cate->id])}}" class="btn btn-primary " @popper(Chỉnh Sửa)><i class="fa	fa-edit"></i></a>  
                                                         <a onclick="return confirm('chắc ko bạn')" href="{{route('category/Del',['id'=> $cate->id])}}" class="btn btn-danger " @popper(Xóa) ><i class="fa fa-ban"></i></a></td>
         

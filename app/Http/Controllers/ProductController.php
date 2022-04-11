@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Categories;
 use Illuminate\Http\Request;
 use App\Models\Products;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -38,6 +39,10 @@ class ProductController extends Controller
         );
         $prod=new Products();
         $prod->fill($request->all());
+
+        $path=$request->file('image')->store('public');
+        $getPath =  storage_path('app/'.$path);
+        $prod->image=$getPath;
         $prod->save();
         return redirect(route('product'))->with('message', 'Thêm Thành Công');
     }
@@ -61,6 +66,7 @@ class ProductController extends Controller
         );
         $prod=Products::find($id);
         $prod->fill($request->all());
+        
         $prod->save();
         return redirect(route('product'))->with('message', 'Sửa Thành Công');
     }

@@ -13,7 +13,8 @@ class CategoryController extends Controller
         return view('Admin.category.veiw',compact('category'));
     }
     public function addForm(){
-        return view('Admin.category.add');
+        $cate=Categories::all()->load('cate');
+        return view('Admin.category.add',compact('cate'));
     }
     public function add(Request $request){
         $request->validate(
@@ -26,8 +27,9 @@ class CategoryController extends Controller
         return redirect(route('category'))->with('message', 'Thêm Thành Công');
     }
     public function editForm($id){
+        $category=Categories::all();
         $cate=Categories::where('id', $id)->first();
-        return view('Admin.category.edit', compact('cate'));
+        return view('Admin.category.edit', compact('cate','category'));
     
     }
     public function edit(Request $request,$id){
@@ -48,6 +50,11 @@ class CategoryController extends Controller
         foreach($products as $p){
             $p->status = 0;
             $p->save();
+        }
+        $cate=Categories::where('parent_id', $id)->get();
+        foreach($cate as $c){
+            $c->parent_id = 0;
+            $c->save();
         }
         Categories::destroy($id);
         return redirect()->route('category')->with('message', 'Xóa Thành Công');

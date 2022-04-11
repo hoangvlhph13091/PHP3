@@ -32,7 +32,7 @@ class LoginController extends Controller
             return redirect()->route('home');
         }
         else{
-            return redirect()->route('login')->with('error','Sai thông tin rồi thằng lone');
+            return redirect()->route('login')->with('error','Sai thông tin rồi ');
         }
 
     }
