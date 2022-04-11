@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Categories;
 use Illuminate\Http\Request;
 use App\Models\Products;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
@@ -40,11 +41,9 @@ class ProductController extends Controller
         $prod=new Products();
         $prod->fill($request->all());
         $file = $request->image->getClientOriginalName();
-            // $fileHashName = $file->hashName();
-            // $fileName = $request->name . '-' . $fileHashName;
-            // $prod->image = $file->storeAs('storage/app/public', $fileName);
-        $request->file('image')->storeAs('public/image', $file);
-        $prod->image=$file;
+        $newName=($prod->name.$file);
+        $request->image->storeAs('public/image', $prod->name.$file);
+        $prod->image=$newName;
         $prod->save();
         return redirect(route('product'))->with('message', 'Thêm Thành Công');
     }
@@ -57,23 +56,36 @@ class ProductController extends Controller
         $request->validate(
             [ 'name'=>'required',
             'price'=>'required|integer',
-            'image'=>'required',
             'description'=>'required',
             ],[
             'name.required'=>'Tên Không Được Để Trống',
             'price.required'=>'Giá Không Được Để Trống',
-            'image.required'=>'Ảnh Không Được Để Trống',
             'description.required'=>'Mô Tả Không Được Để Trống',
             ]
         );
         $prod=Products::find($id);
+        $prodimg=$prod->image;
         $prod->fill($request->all());
-        
+        if($request->hasFile('image')){
+            // dd($prodimg);
+            File::delete(asset('public/image/'.$prodimg));
+            $file = $request->image->getClientOriginalName();
+            $newName=($prod->name.$file);
+            $request->image->storeAs('public/image', $prod->name.$file);
+            $prod->image=$newName;
+
+        }
+        else{
+            $prod->image=$prodimg;
+        }
         $prod->save();
         return redirect(route('product'))->with('message', 'Sửa Thành Công');
     }
     public function del($id){
-        Products::destroy($id);
+        $prod=Products::find($id);
+        File::delete($prod->image);
+        $prod->delete();
+        // Products::destroy($id);
         return redirect()->route('product')->with('message', 'Xóa Thành Công');
     }
 

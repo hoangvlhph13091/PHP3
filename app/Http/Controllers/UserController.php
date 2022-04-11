@@ -11,4 +11,8 @@ class UserController extends Controller
         $user=User::paginate(10);
         return view('Admin.user.view',compact('user'));
     }
+    public function del($id){
+        User::destroy($id);
+        return redirect(route('user'))->with('message','Xóa Thành Công');
+    }
 }

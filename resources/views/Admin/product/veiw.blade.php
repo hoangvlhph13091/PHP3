@@ -52,7 +52,7 @@
                     <td >{{$pd->id}}</td>
                     <td>{{$pd->name}}</td>
                     <td>{{$pd->price}}</td>
-                    <td><img src="{{asset('storage/image/'.$pd->image)}}" style="height: 150px" alt="{{$pd->image}}"></td>
+                    <td><img src="{{asset('storage/image/'.$pd->image)}}" style="height: 150px" alt="{{asset('storage/image/'.$pd->image)}}"></td>
                     <td>{{$pd->description}}</td>
                     <td>@if (isset($pd->cate->name))
                       {{$pd->cate->name}}

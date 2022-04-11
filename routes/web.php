@@ -49,6 +49,7 @@ route::middleware('auth')->prefix('admin')->group(function(){
     Route::any('/post/del{id}', [PostsController::class, 'del'])->name('post-del');
 
     Route::get('/user', [UserController::class, 'index'])->name('user');
+    Route::any('/user/del/{id}', [UserController::class, 'del'])->name('user-del');
     
 
 });
