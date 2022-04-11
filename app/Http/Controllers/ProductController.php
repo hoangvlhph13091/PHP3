@@ -39,10 +39,12 @@ class ProductController extends Controller
         );
         $prod=new Products();
         $prod->fill($request->all());
-
-        $path=$request->file('image')->store('public');
-        $getPath =  storage_path('app/'.$path);
-        $prod->image=$getPath;
+        $file = $request->image->getClientOriginalName();
+            // $fileHashName = $file->hashName();
+            // $fileName = $request->name . '-' . $fileHashName;
+            // $prod->image = $file->storeAs('storage/app/public', $fileName);
+        $request->file('image')->storeAs('public/image', $file);
+        $prod->image=$file;
         $prod->save();
         return redirect(route('product'))->with('message', 'Thêm Thành Công');
     }
