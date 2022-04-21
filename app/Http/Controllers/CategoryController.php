@@ -43,6 +43,10 @@ class CategoryController extends Controller
         );
         $cate=Categories::find($id);
         $cate->fill($request->all());
+        $file = $request->image->getClientOriginalName();
+        $newName=($cate->name.$file);
+        $request->image->storeAs('public/image', $cate->name.$file);
+        $cate->image=$newName;
         $cate->save();
         return redirect(route('category'))->with('message', 'sửa Thành Công');
     }

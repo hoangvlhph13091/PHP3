@@ -42,6 +42,7 @@
                     @error('image')
                     <div class="alert text-danger">{{ $message }}</div>
                     @enderror
+                    <img src="{{asset('storage/image/'.$product->image)}}" alt="" style="height: 200px">
                 </div>
                 <div class="form-group m-form__group">
                     <label for="exampleInputPassword1">description</label>

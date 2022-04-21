@@ -31,10 +31,12 @@
                 </div>
                 <div class="form-group m-form__group">
                     <label for="exampleInputPassword1">img</label>
-                    <input type="text" class="form-control m-input m-input--square @error('image') is-invalid @enderror" id="exampleInputPassword1" name="image" value="{{$cate->image}}" >
+                    <input type="file" class="form-control m-input m-input--square @error('image') is-invalid @enderror" id="exampleInputPassword1" name="image" value="{{$cate->image}}" >
                     @error('image')
                     <div class="alert text-danger">{{ $message }}</div>
                     @enderror
+                    <img src="{{asset('storage/image/'.$cate->image)}}" alt="" style="height: 200px">
+
                 </div>
                 <div class="form-group m-form__group">
                     <label for="exampleInputPassword1">category</label>
