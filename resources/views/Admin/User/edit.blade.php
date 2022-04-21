@@ -1,6 +1,6 @@
 @extends('admin.layouts.main')
 @section('title')
-    <p>category-add</p>
+    <p>user-edit</p>
 @endsection
 @section('content')
 <div class="container">
@@ -24,32 +24,30 @@
             <div class="m-portlet__body">
                 <div class="form-group m-form__group">
                     <label for="exampleInputEmail1">name</label>
-                    <input type="text" class="form-control m-input m-input--square @error('name') is-invalid @enderror" id="exampleInputEmail1" name="name" placeholder="Enter email">
+                    <input type="text" class="form-control m-input m-input--square @error('name') is-invalid @enderror" id="exampleInputEmail1" name="name" value="{{$user->name}}">
                     @error('name')
                     <div class="alert text-danger">{{ $message }}</div>
                     @enderror
                 </div>
                 <div class="form-group m-form__group">
-                    <label for="exampleInputPassword1">img</label>
-                    <input type="file" class="form-control m-input m-input--square @error('image') is-invalid @enderror" id="exampleInputPassword1" name="image" placeholder="Image link">
-                    @error('image')
+                    <label for="exampleInputEmail1">Email</label>
+                    <input type="email" class="form-control m-input m-input--square @error('name') is-invalid @enderror" id="exampleInputEmail1" name="email" value="{{$user->email}}">
+                    @error('name')
                     <div class="alert text-danger">{{ $message }}</div>
                     @enderror
                 </div>
                 <div class="form-group m-form__group">
-                    <label for="exampleInputPassword1">parent category</label>
-                    <select name="parent_id" id="" class="form-control">
-                        <option value="0">N/A</option>
-
-                        @foreach ($cate as $c)
-                            <option value="{{$c->id}}">{{$c->name}}</option>
-                        @endforeach
-                    </select>
-                </div> 
+                    <label for="exampleInputEmail1">password</label>
+                    <input type="password" class="form-control m-input m-input--square @error('name') is-invalid @enderror" id="exampleInputEmail1" name="password" value="{{$user->password}}">
+                    @error('name')
+                    <div class="alert text-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+               
             </div>
             <div class="m-portlet__foot m-portlet__foot--fit">
                 <div class="m-form__actions">
-                    <button type="submit" class="btn btn-primary">Add</button>
+                    <button type="submit" class="btn btn-primary">edit</button>
                     <button type="reset" class="btn btn-secondary">Cancel</button>
                 </div>
             </div>

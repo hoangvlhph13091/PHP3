@@ -48,7 +48,7 @@
                   <tr class="odd">
                     <td >{{$cate->id}}</td>
                     <td>{{$cate->name}}</td>
-                    <td><img src="{{$cate->image}}" style="height: 150px" alt=""></td>
+                    <td><img src="{{asset('storage/image/'.$cate->image)}}" style="height: 150px" alt=""></td>
                     <td>@if ($cate->parent_id == 0)
                         <p>N/A</p>
                     @else

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\HomepageController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\ProductController;
@@ -21,9 +22,8 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::get('/home', function(){return view('home');})->name('home');
-Route::get('/', function(){return view('home');})->name('home');
-Route::get('/product', function(){return view('product');});
+Route::get('/home', [HomepageController::class, 'index'])->name('home');
+Route::get('/', [HomepageController::class, 'index'])->name('home');
 Route::middleware('guest')->get('/login', [LoginController::class, 'index'])->name('login-form');
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 Route::middleware('auth')->any('/logout', [LoginController::class, 'logout'])->name('logout');
@@ -51,6 +51,8 @@ route::middleware('auth')->prefix('admin')->group(function(){
     Route::get('/user', [UserController::class, 'index'])->name('user');
     Route::get('/user/add', [UserController::class, 'addform'])->name('user-add');
     Route::post('/user/add', [UserController::class, 'add'])->name('user-add');
+    Route::get('/user/edit/{id}', [UserController::class, 'editform'])->name('user-edit');
+    Route::post('/user/edit/{id}', [UserController::class, 'edit'])->name('user-edit');
     Route::any('/user/del/{id}', [UserController::class, 'del'])->name('user-del');
     
 

@@ -52,11 +52,14 @@
                     <td >{{$pd->id}}</td>
                     <td>{{$pd->name}}</td>
                     <td>{{$pd->price}}</td>
-                    <td><img src="{{asset('storage/image/'.$pd->image)}}" style="height: 150px" alt="{{asset('storage/image/'.$pd->image)}}"></td>
+                    <td><img src="{{asset('storage/image/'.$pd->image)}}" style="height: 150px" alt="img"></td>
                     <td>{{$pd->description}}</td>
                     <td>@if (isset($pd->cate->name))
                       {{$pd->cate->name}}
                     @endif</td>
+                    {{-- <td>
+                      <div class="bootstrap-switch-container" style="width: 152.625px; margin-left: 0px;"><span class="bootstrap-switch-handle-on bootstrap-switch-primary" style="width: 50.8906px;">ON</span><span class="bootstrap-switch-label" style="width: 50.8906px;">&nbsp;</span><span class="bootstrap-switch-handle-off bootstrap-switch-default" style="width: 50.8906px;">OFF</span><input data-switch="true" type="checkbox" checked="checked"></div>
+                    </td> --}}
                     <td>@if ($pd->status==1)
                           <p style="color: green ; font-weight: 700">Active</p>
                         @else
