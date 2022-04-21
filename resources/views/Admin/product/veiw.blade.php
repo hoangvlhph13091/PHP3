@@ -66,7 +66,6 @@
                                                         <a onclick="return confirm('chắc ko bạn')" href="{{route('product-del',['id'=> $pd->id])}}" class="btn btn-danger " @popper(Xóa) ><i class="fa fa-ban"></i></a></td>
         
                   </tr>
-                    
                 @endforeach
               </tbody>
             </table>

@@ -9,7 +9,7 @@
     <div class="card-header flex-wrap py-3">
       <div class="search">
         <div> 
-         <a href="" class="btn btn-outline-brand m-btn m-btn--custom m-btn--icon m-btn--pill m-btn--air">
+         <a href="{{route('user-add')}}" class="btn btn-outline-brand m-btn m-btn--custom m-btn--icon m-btn--pill m-btn--air">
            <span>
              <i class="la la-plus"></i>
              <span>Add</span>
@@ -62,6 +62,11 @@
       </table>
     </div>
   </div>
+  
+  </div>
+  <div  class=" dataTables_pager">
+          
+    {!! $user->links() !!}
   
   </div>
       <!--end: Datatable-->

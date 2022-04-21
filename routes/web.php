@@ -49,6 +49,8 @@ route::middleware('auth')->prefix('admin')->group(function(){
     Route::any('/post/del{id}', [PostsController::class, 'del'])->name('post-del');
 
     Route::get('/user', [UserController::class, 'index'])->name('user');
+    Route::get('/user/add', [UserController::class, 'addform'])->name('user-add');
+    Route::post('/user/add', [UserController::class, 'add'])->name('user-add');
     Route::any('/user/del/{id}', [UserController::class, 'del'])->name('user-del');
     
 
