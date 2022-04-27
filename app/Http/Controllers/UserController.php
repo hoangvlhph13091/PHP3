@@ -50,9 +50,16 @@ class UserController extends Controller
         );
         $user=User::find($id);
         $user->fill($request->all());
-        $user->password=Hash::make($request->password);
-        $user->save();
-        return redirect(route('user'))->with('message', 'Thêm Thành Công');
+        if($user->password == $request->password){
+            $user->save();
+            return redirect(route('user'))->with('message', 'Thêm Thành Công');
+        }
+        else{
+            $user->password=Hash::make($request->password);
+            $user->save();
+            return redirect(route('user'))->with('message', 'Thêm Thành Công');
+        }
+       
     }
     public function del($id){
         User::destroy($id);

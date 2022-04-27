@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class CategoryController extends Controller
 {
     public function index(){
-        $category=Categories::paginate(10);
+        $category=Categories::orderBy('created_at','desc')->paginate(10);
         return view('Admin.category.veiw',compact('category'));
     }
     public function addForm(){
